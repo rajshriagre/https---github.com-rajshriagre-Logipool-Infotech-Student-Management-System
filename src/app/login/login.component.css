@@ -1,0 +1,53 @@
+.form-card{
+    height : 93vh;
+}
+form{
+    width: 23%;
+    margin-left: 7em;
+    background-color: #EBEDF9;
+    border-radius: 13px;
+    padding: 46px 60px !important;
+}
+.text-muted{
+    justify-content: flex-end;
+    float:right;
+}
+.text-end{
+    margin-right: auto;
+}
+.logo{
+    margin-left: 190px;
+}
+.password{
+    /* color: blue; */
+    float: right;
+}
+.input-icons i {
+    position: absolute;
+}
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+section{
+    background-image: url(../../assets/Images/loginimg.png);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100%;
+}
+.img{
+    margin-top: 4%;
+    margin-left: 180px;
+    
+}
