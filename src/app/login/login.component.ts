@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { LogipoolService } from '../logipool.service';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,8 @@ export class LoginComponent {
   emailId : string ="";
   password : string ="";
   show: boolean= false;
-   constructor(private router: Router, private http: HttpClient)
+   constructor(private router: Router, private http: HttpClient,
+    private authService:AuthService)
    {}
   
   login()
@@ -27,12 +29,14 @@ export class LoginComponent {
     password:this.password
   };
   
-  this.http.post("http://localhost:5100/student/loginn", bodydata).subscribe(  (resultData: any) => {
+  this.http.post("http://localhost:3000/user/login", bodydata).subscribe(  (resultData: any) => {
         console.log(resultData);
+        console.log(resultData.message);
+        console.log(resultData.status);
         if (resultData.status) 
         {
-      
-           this.router.navigateByUrl('/home');
+           this.authService.isLoggedIn = true;
+           this.router.navigateByUrl('home');
     
         } 
         else

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorMessageComponent } from './error-message.component';
+import { StudentmasterComponent } from './studentmaster.component';
 
-describe('ErrorMessageComponent', () => {
-  let component: ErrorMessageComponent;
-  let fixture: ComponentFixture<ErrorMessageComponent>;
+describe('StudentmasterComponent', () => {
+  let component: StudentmasterComponent;
+  let fixture: ComponentFixture<StudentmasterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorMessageComponent ]
+      declarations: [ StudentmasterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ErrorMessageComponent);
+    fixture = TestBed.createComponent(StudentmasterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

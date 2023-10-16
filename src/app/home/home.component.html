@@ -1,22 +1,19 @@
- <app-navbar></app-navbar>
-
-<div class="container-fluid">
-
-  <div class="row">
-    <div class="col-md-2 column" style="padding: 0px;">
-
-      <app-sidebar></app-sidebar>
+<!-- <div class="container-fluid" *ngIf="authService.isLoggedIn">
+    <app-navbar></app-navbar>
+        <div class="row">
+          <div class="col-md-2 column" style="padding: 0px;">
       
-    </div>
-    <div class="col-md-10 column">
-      <router-outlet></router-outlet>
+            <app-sidebar></app-sidebar>
+            
+          </div>
+          <div class="col-md-10 column">
+            
+            <router-outlet></router-outlet>
+            
+          </div>
+        </div>
       
       
-    </div>
-
-   
-
-  </div>
-
-
-</div>  
+      </div>
+    
+    <router-outlet *ngIf="!authService.isLoggedIn"></router-outlet> -->

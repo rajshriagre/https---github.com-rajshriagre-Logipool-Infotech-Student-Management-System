@@ -1,0 +1,62 @@
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: black;
+    background-color: #D6DDEF;
+}
+.nav-link {
+    color: white;
+    font-size: 15px;
+    border-radius: 0px !important;
+}
+#pills-tab{
+    background-color: black;
+}
+
+
+
+.formGroup{
+    display: inline-block;
+}
+.form-control{
+    display: inline-block !important;
+    width: 90%;
+}
+.col-form-label{
+    margin-right: 30px;
+    width: 34%;
+}
+.form-select{
+    display: inline-block !important;
+    width: 90%;
+}
+.modal-footer
+{
+    justify-content: center !important;
+}
+
+
+
+.modal-header{
+    display: flex !important;
+    background-color: black;
+    color: white;
+}
+.formGroup{
+    display: inline-block;
+}
+.form-control{
+    display: inline-block !important;
+    width: 70%;
+}
+.col-form-label{
+    margin-right: 20px;
+    width: 24%;
+}
+.form-select{
+    display: inline-block !important;
+    width: 70%;
+}
+.modal-footer
+{
+    justify-content: center !important;
+}

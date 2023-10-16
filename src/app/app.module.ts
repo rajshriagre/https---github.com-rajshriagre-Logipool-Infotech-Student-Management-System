@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ErrorMessageComponent } from './error-message/error-message.component';
+
 import { AdminsidebarComponent } from './adminsidebar/adminsidebar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TrainersidebarComponent } from './trainersidebar/trainersidebar.component';
@@ -21,16 +21,23 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { LogipoolService } from './logipool.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
+
 import { SyllabusComponent } from './syllabus/syllabus.component';
 import { SyllabusService } from './syllabus.service';
+
+import { RouterModule } from '@angular/router';
+import { AdminmoduleModule } from './adminmodule/adminmodule.module';
+import { HomeComponent } from './home/home.component';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AssignmentComponent,
     NavbarComponent,
-    ErrorMessageComponent,
     AdminsidebarComponent,
     SidebarComponent,
     TrainersidebarComponent,
@@ -40,8 +47,10 @@ import { SyllabusService } from './syllabus.service';
     ExaminationComponent,
     TopicsComponent,
     TrainerComponent,
+    SyllabusComponent,
     HomeComponent,
-    SyllabusComponent
+   
+   
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,11 @@ import { SyllabusService } from './syllabus.service';
     NgbModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+   AdminmoduleModule,
+
+
   ],
   exports: [
     MatButtonModule,
