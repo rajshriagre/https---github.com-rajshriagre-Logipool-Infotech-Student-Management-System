@@ -119,8 +119,8 @@ export class BatchmastersComponent {
     
     
     
-    this.updateBatchForm.controls['updatedbatchname'].setValue(data.batchName);
-    this.updateBatchForm.controls['updatedcoursename'].setValue(data.courseName);
+    this.updateBatchForm.controls['updatedbatchname'].setValue(data.name);
+    this.updateBatchForm.controls['updatedcoursename'].setValue(data.course);
     this.updateBatchForm.controls['updatedstartdate'].setValue(data.startDate);
     this.updateBatchForm.controls['updatedenddate'].setValue(data.endDate);
     

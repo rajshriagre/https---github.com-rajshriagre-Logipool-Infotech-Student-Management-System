@@ -60,7 +60,7 @@ ngOnInit(): void {
       //for course select box
     this.http.get("http://localhost:3000/admin/getAllCourse").subscribe((data:any)=>{
       console.log(data.allCourses);
-      console.log('"hadsvz')
+      
        this.courses=data.allCourses;
        console.log(this.courses);
     });
@@ -75,27 +75,28 @@ ngOnInit(): void {
     });
 
     //for rendering in table
-    this.http.get("http://localhost:3000/admin/getAllTopics").subscribe((data:any)=>{
+    this.http.get("http://localhost:3000/admin/getAllTopic").subscribe((data:any)=>{
+      console.log("Module topics data");
       console.log(data);
-      this. moduletopicDetails=data.allModulesTopics;
+      this. moduletopicDetails=data.allTopics;
       console.log("rajshriii ")
-      console.log(this. moduletopicDetails)
+      console.log(this.moduletopicDetails)
        
     });
 
 }
 
-// getAllModuleTopics()
-// {
-//      //get moduletopic api call
-//      this.http.get("http://localhost:3000/admin/getAllTopics").subscribe((data:any)=>{
-//       console.log(data);
-//       this. moduletopicDetails=data.allModulesTopics;
-//       console.log("rajshri")
-//       console.log(this. moduletopicDetails)
+getAllModuleTopics()
+{
+     //get moduletopic api call
+     this.http.get("http://localhost:3000/admin/getAllTopic").subscribe((data:any)=>{
+      console.log(data);
+      this. moduletopicDetails=data.allTopics;
+      console.log("rajshri")
+      console.log(this. moduletopicDetails)
        
-//     });
-// }
+    });
+}
 
 //add ModuleTopic Logic
 addModuleTopic()
@@ -105,6 +106,7 @@ addModuleTopic()
     //If form is valid then post form data in database
     console.log(this.addModuleTopicForm);
     console.log(this.addModuleTopicForm.value);
+    
 
     //post data logic 
     let dataToInput={
@@ -126,8 +128,7 @@ addModuleTopic()
       });
 
      
-    this.moduletopicDetails.push(dataToInput);
-
+ 
 
 
     //to close modal
@@ -135,7 +136,7 @@ addModuleTopic()
     closeButton?.click();
 
   
-
+    this.getAllModuleTopics();
   //to reset the value of form(if we want to reset all the textfeilds of the form)
   this.addModuleTopicForm.reset();
 }
@@ -151,9 +152,9 @@ onUpdate(data:any)
   console.log(data.modulename);
 
 
-  this.updateModuleTopicForm.controls['updatedcoursename'].setValue(data.coursename)
-  this.updateModuleTopicForm.controls['updatedmodulename'].setValue(data.modulename)
-  this.addModuleTopicForm.controls['updatedtopicname'].setValue(data.topicname)
+  this.updateModuleTopicForm.controls['updatedcoursename'].setValue(data.courseName)
+  this.updateModuleTopicForm.controls['updatedmodulename'].setValue(data.moduleName)
+  this.addModuleTopicForm.controls['updatedtopicname'].setValue(data.topicName)
 
 
 
@@ -168,9 +169,14 @@ updateModuleTopic()
   console.log(this.updateModuleTopicForm);
   console.log(this.updateModuleTopicForm.value);
 
+  let bodydata :any={
+    courseName:this.updateModuleTopicForm.value.updatedcoursename,
+    moduleName:this.updateModuleTopicForm.value.updatedmodulename
+  };
 
   //update api call
-
+  this.http.put<any>(`http://localhost:3000/admin/updateTopic/${this.selectedId}`,bodydata).subscribe((data:any)=>{
+    console.log("From Backend" + data.message);})
   this.updateModuleTopicForm.reset();
 }
 
@@ -186,9 +192,14 @@ deleteModuleTopic()
 {
   console.log(this.selectedId);
   //delete api call
+  
+  this.http.delete(`http://localhost:3000/admin/deleteTopic/${this.selectedId}`).subscribe((data:any)=>{
+      console.log("From Backend" + data.message);
+      
+    });
 
 
-  // this.getAllModuleTopics();
+  this.getAllModuleTopics();
   this.selectedId="";
 }
 }

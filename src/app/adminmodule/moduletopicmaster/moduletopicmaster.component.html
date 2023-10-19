@@ -20,40 +20,56 @@
      <form [formGroup]="addModuleTopicForm" (ngSubmit)="addModuleTopic()">
       <div class="modal-body">
           <div class="container-fluid">
-              <div class="row">
-              <div class="col-md-8">
-                  <div class="col-mb-4">
-                      <label for="recipient-name" class="col-form-label" style="width: 100%;">Course Name :</label>
-                      <select class="form-select" aria-label="Default select example" formControlName="coursename">
-                          <option *ngFor="let value of courses" [ngValue]="courses.courseName">
-                              {{value.courseName}}
-                          </option>
-                        </select>
-                        </div>
-                        </div>
-                        </div>
-
-
-              <div class="row">    
-              <div class="col-md-8">
-                  <div class="col-mb-4">
-                      <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name :</label>
-                      <select class="form-select" aria-label="Default select example" formControlName="modulename">
-                          <option *ngFor="let value of module" [ngValue]="module.moduleName">
-                              {{value.moduleName}}
+              <div class="row mb-3" >
+                    <div class="col-md-4">
+                        
+                            <label for="recipient-name" class="col-form-label" style="width: 100%;">Course Name :</label>
+                            
+                    </div>  
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example" formControlName="coursename">
+                            <option *ngFor="let value of courses" [ngValue]="value.courseName">
+                                {{value.courseName}}
                             </option>
                         </select>
-                  </div>
-               </div></div>
+                    </div>
+             
+                        
+            </div>
+
+
+              <div class="row mb-3">    
+                        <div class="col-md-4">
+                            
+                                <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name :</label>
+                                
+                            
+                        </div>
+
+                        <div class="col-md-8">
+                            
+                            <select class="form-select" aria-label="Default select example" formControlName="modulename">
+                                <option *ngFor="let value of module" [ngValue]="value.moduleName">
+                                    {{value.moduleName}}
+                                </option>
+                            </select>
+                        
+                    </div>
+            </div>
 
 
                <div class="row">
-               <div class="col-md-8">
-                  <div class="col-mb-4">
-                      <label for="recipient-name" class="col-form-label" style="width: 100%;">Topic Name :</label>
-                      <input type="text" class="form-control" id="topicename" formControlName="topicname">
-                  </div>
-               </div>
+                        <div class="col-md-4">
+                            
+                                <label for="recipient-name" class="col-form-label" style="width: 100%;">Topic Name :</label>
+                                
+                        </div>
+
+                        <div class="col-md-8">
+                            
+                            <input type="text" class="form-control" id="topicename" formControlName="topicname">
+                        
+                        </div>
           </div>
 
           </div>
@@ -115,42 +131,60 @@
                   <div class="modal-body">
                       <div class="container-fluid">
 
-                         <div class="row">
-                          <div class="col md-8">
-                              <div class="col-mb-4">
-                                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Course Name :</label>
-                                  <select class="form-select" aria-label="Default select example" formControlName="updatemoduletopic">
-                                      <option *ngFor="let course of courseDetails" [ngValue]="course">
-                                          {{course.courseName}}
-                                        </option>
-                                    </select>
-                              </div>
-                           </div>
+                         <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        
+                                            <label for="recipient-name" class="col-form-label" style="width: 100%;">Course Name :</label>
+                                            
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        
+                                        <select class="form-select" aria-label="Default select example" formControlName="updatedcoursename">
+                                            <option *ngFor="let course of courseDetails" [ngValue]="course">
+                                                {{course.courseName}}
+                                            </option>
+                                        </select>
+                                    </div>
+
                            </div>
 
                           
-                           <div class="row">
-                          <div class="col md-6">
-                              <div class="col-mb-3">
-                                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name :</label>
-                                  <select class="form-select" aria-label="Default select example" formControlName="updateModuleTopic">
-                                      <option *ngFor="let module of moduleDetails" [ngValue]="module">
-                                          {{module.moduleName}}
-                                      </option>
-                                    </select>
-                              </div>
-                           </div>
-                           </div>
-
-
-
-                           <div class="row">
                            <div class="row mb-3">
-                              <div class="col-md-4">
-                                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Topic Name :</label>
-                                  <input type="text" class="form-control" id="topicename" formControlName="updatetopicname">
-                              </div>
+
+                            <div class="col-md-4">
+                                <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name :</label>
+                                  
+                            </div>
+
+                            <div class="col-md-8">
+                                <select class="form-select" aria-label="Default select example" formControlName="updatedmodulename">
+                                    <option *ngFor="let module of moduleDetails" [ngValue]="module">
+                                        {{module.moduleName}}
+                                    </option>
+                                  </select>  
+                            </div>
+                                
+                                 
+                              
+                           
                            </div>
+
+
+
+                           <div class="row">
+                            <div class="col-md-4">
+
+                              
+                                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Topic Name :</label>
+                                 
+                           </div>
+                           <div class="col-md-8">
+
+                              
+                            <input type="text" class="form-control" id="topicename" formControlName="updatedtopicname">
+                              
+                     </div>
                       </div>
                       
                   </div>
