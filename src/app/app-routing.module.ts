@@ -11,6 +11,7 @@ import { SyllabusComponent } from './syllabus/syllabus.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AdminmasternavbarComponent } from './adminmodule/adminmasternavbar/adminmasternavbar.component';
+import { AdminmainComponent } from './adminmodule/adminmain/adminmain.component';
 
 
 
@@ -26,7 +27,7 @@ const routes: Routes = [
 
   {path:'trainer', component:TrainerComponent},
   {path:'syllabus', component:SyllabusComponent},
-  {path:'master',component:AdminmasternavbarComponent}
+  {path:'master',component:AdminmainComponent}
 
 
 ];

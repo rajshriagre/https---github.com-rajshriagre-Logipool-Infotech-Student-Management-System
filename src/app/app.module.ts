@@ -33,6 +33,7 @@ import { HomeComponent } from './home/home.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +50,7 @@ import { HomeComponent } from './home/home.component';
     TrainerComponent,
     SyllabusComponent,
     HomeComponent,
-   
-   
+  
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,8 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     HttpClientModule,
     RouterModule,
-   AdminmoduleModule,
+    AdminmoduleModule
+   
 
 
   ],

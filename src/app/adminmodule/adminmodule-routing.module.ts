@@ -9,15 +9,19 @@ import { AdminmainComponent } from './adminmain/adminmain.component';
 import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermodule.component';
 import { AdminmasternavbarComponent } from './adminmasternavbar/adminmasternavbar.component';
 
+import { BatchmastersComponent } from './batchmasters/batchmasters.component';
+
 const routes: Routes = [
-  {path: '',component:AdminmainComponent},
-  {path:'master', component:AdminmainComponent},
+  {path: '',component:AdminmasternavbarComponent},
+  {path:'master', component:AdminmasternavbarComponent},
   {path:'CourseMaster',component:CourcemasterComponent},
   {path:'ModuleMaster',component:ModulemasterComponent},
   {path:'ModuleTopicMaster',component:ModuletopicmasterComponent},
   {path:'TrainerMaster',component:TrainermasterComponent},
   {path:'StudentMaster',component:StudentmasterComponent},
+  {path:'batchmaster',component:BatchmastersComponent},
   {path:'batchtrainermodule', component:BatchtrainermoduleComponent}
+  
  
 
 ];

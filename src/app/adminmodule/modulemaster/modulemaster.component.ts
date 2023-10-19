@@ -119,8 +119,43 @@ deleteModule()
 
 
   
-  this.getAllModules();
-  this.selectedId="";
+
+}
+
+
+//logic to update module
+
+onUpdateModule(data:any)
+{ 
+  console.log("inside onUpdate")
+  console.log(data);
+  
+  this.updateModuleForm.controls['updatedcoursename'].setValue(data.courseName);
+  this.updateModuleForm.controls['updatedmodulename'].setValue(data.moduleName);
+  
+  this.selectedId=data._id;
+
+}
+
+updateModule()
+{
+  console.log("inside Update Module");
+
+  let bodydata :any={
+    courseName:this.updateModuleForm.value.updatedcoursename,
+    courseDuration:this.updateModuleForm.value.updatedmodulename
+  };
+  console.log(bodydata);
+  //update module call api
+   this.http.put<any>(`http://localhost:3000/admin/updateModule/${this.selectedId}`,bodydata).subscribe((data:any)=>{
+      console.log("From Backend" + data.message);})
+     
+      this.selectedId="";
+      this.getAllModules();
+      this.updateModuleForm.reset();
+ 
+      
+  
 }
 
 }

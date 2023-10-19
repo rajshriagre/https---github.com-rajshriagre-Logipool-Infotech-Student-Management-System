@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermodule.component';
 
+import { BatchmastersComponent } from './batchmasters/batchmasters.component';
+
 
 @NgModule({
   declarations: [
@@ -23,14 +25,15 @@ import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermo
     ModuletopicmasterComponent,
     StudentmasterComponent,
     TrainermasterComponent,
-    BatchtrainermoduleComponent
+    BatchtrainermoduleComponent,
+    BatchmastersComponent
   ],
   imports: [
     CommonModule,
     AdminmoduleRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports:[
     AdminmainComponent,
@@ -40,7 +43,8 @@ import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermo
     ModuletopicmasterComponent,
     StudentmasterComponent,
     TrainermasterComponent,
-    BatchtrainermoduleComponent
+    BatchtrainermoduleComponent,
+    BatchmastersComponent
   ]
 })
 export class AdminmoduleModule { }
