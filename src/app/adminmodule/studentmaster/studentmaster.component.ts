@@ -84,7 +84,12 @@ export class StudentmasterComponent implements OnInit
  
    getAllStudents()
    {
-      //get student api call
+    this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
+      console.log('25/10')
+    console.log(data.allBatches);
+     this.batchNames=data.allBatches;
+     console.log(this.batchNames);
+  });
    }
  
  
