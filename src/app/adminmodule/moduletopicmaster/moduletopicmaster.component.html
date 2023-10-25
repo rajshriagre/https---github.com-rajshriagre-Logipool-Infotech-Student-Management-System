@@ -141,10 +141,10 @@
                                     <div class="col-md-8">
                                         
                                         <select class="form-select" aria-label="Default select example" formControlName="updatedcoursename">
-                                            <option *ngFor="let course of courseDetails" [ngValue]="course">
-                                                {{course.courseName}}
+                                            <option *ngFor="let value of courses" [ngValue]="value.courseName">
+                                                {{value.courseName}}
                                             </option>
-                                        </select>
+                                            </select>
                                     </div>
 
                            </div>
@@ -159,8 +159,8 @@
 
                             <div class="col-md-8">
                                 <select class="form-select" aria-label="Default select example" formControlName="updatedmodulename">
-                                    <option *ngFor="let module of moduleDetails" [ngValue]="module">
-                                        {{module.moduleName}}
+                                    <option *ngFor="let value of module" [ngValue]="value.moduleName">
+                                        {{value.moduleName}}
                                     </option>
                                   </select>  
                             </div>
@@ -176,13 +176,13 @@
                             <div class="col-md-4">
 
                               
-                                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Topic Name :</label>
+                                  <label for="recipient-name" style="width: 100%;">Topic Name :</label>
                                  
                            </div>
                            <div class="col-md-8">
 
                               
-                            <input type="text" class="form-control" id="topicename" formControlName="updatedtopicname">
+                            <input type="text" class="form-control" id="topicename" formControlName="updatedtopicname" >
                               
                      </div>
                       </div>

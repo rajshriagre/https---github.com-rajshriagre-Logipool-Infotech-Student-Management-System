@@ -147,18 +147,23 @@ addModuleTopic()
 
 onUpdate(data:any)
 {
+  console.log("inside onUpdate function")
   console.log(data);
-  console.log(data.coursename);
-  console.log(data.modulename);
+  console.log(data.courseName);
+  console.log(data.moduleName);
+  console.log(data.topicName);
+  console.log(data._id)
 
 
   this.updateModuleTopicForm.controls['updatedcoursename'].setValue(data.courseName)
   this.updateModuleTopicForm.controls['updatedmodulename'].setValue(data.moduleName)
-  this.addModuleTopicForm.controls['updatedtopicname'].setValue(data.topicName)
+  this.updateModuleTopicForm.controls['updatedtopicname'].setValue(data.topicName)
+  
 
 
 
 this.selectedId=data._id;
+console.log(this.selectedId);
 
 }
 
@@ -171,12 +176,18 @@ updateModuleTopic()
 
   let bodydata :any={
     courseName:this.updateModuleTopicForm.value.updatedcoursename,
-    moduleName:this.updateModuleTopicForm.value.updatedmodulename
+    moduleName:this.updateModuleTopicForm.value.updatedmodulename,
+    topicName:this.updateModuleTopicForm.value.updatedtopicname
   };
+  console.log(bodydata);
 
   //update api call
   this.http.put<any>(`http://localhost:3000/admin/updateTopic/${this.selectedId}`,bodydata).subscribe((data:any)=>{
     console.log("From Backend" + data.message);})
+
+
+    this.selectedId="";
+    this.getAllModuleTopics();
   this.updateModuleTopicForm.reset();
 }
 

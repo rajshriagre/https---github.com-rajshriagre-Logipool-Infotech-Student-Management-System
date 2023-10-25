@@ -24,7 +24,7 @@ export class StudentmasterComponent implements OnInit
    courseDetails:any[]=[];
  
    //for "batch" select box in modal box
-   batchNames:string[]=["Batch1"];
+   batchNames:any=[];
  
    //for "status" select box in modal box
    
@@ -70,6 +70,13 @@ export class StudentmasterComponent implements OnInit
          this.courseDetails=data.allCourses;
          
       });
+
+      this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
+        console.log('25/10')
+      console.log(data.allBatches);
+       this.batchNames=data.allBatches;
+       console.log(this.batchNames);
+    });
  
 
  
@@ -85,20 +92,14 @@ export class StudentmasterComponent implements OnInit
    addStudent()
    {   
      console.log("inside addStudent()");
-     if(this.addStudentForm.status=="INVALID")
-     {
-         alert("Please fill Form properly");
-     }
      
-     else
-     {
        //if form is valid then post form data in database
        console.log(this.addStudentForm);
        console.log(this.addStudentForm.value);
  
        //post data logic ithe lihayache
        let dataToInput={
-         '_id':'22',
+         
          'firstname':this.addStudentForm.value.firstname,
          'lastname':this.addStudentForm.value.lastname,
          'emailid':this.addStudentForm.value.emailid,
@@ -108,8 +109,15 @@ export class StudentmasterComponent implements OnInit
          'status':this.addStudentForm.value.status
  
        }
+       console.log(dataToInput);
  
        //post api call
+       this.http.post("http://localhost:3000/admin/addStudent", dataToInput).subscribe(  (resultData: any) => {
+              console.log(resultData);
+              console.log(resultData.message);
+              console.log(resultData.status);
+      
+            });
  
       
        //to close modal
@@ -117,7 +125,7 @@ export class StudentmasterComponent implements OnInit
        closeButton?.click();
  
  
-     }
+    
      
  
      //to reset the value of form(i.e reset all text fileds of form)
