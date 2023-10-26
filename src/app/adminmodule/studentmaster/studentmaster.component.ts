@@ -24,7 +24,7 @@ export class StudentmasterComponent implements OnInit
    courseDetails:any[]=[];
  
    //for "batch" select box in modal box
-   batchNames:any=[];
+   batchDetails:any=[];
  
    //for "status" select box in modal box
    
@@ -72,10 +72,20 @@ export class StudentmasterComponent implements OnInit
       });
 
       this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
-        console.log('25/10')
+      console.log(data);
       console.log(data.allBatches);
-       this.batchNames=data.allBatches;
-       console.log(this.batchNames);
+       this.batchDetails=data.allBatches
+       ;
+    });
+
+      this.http.get("http://localhost:3000/admin/getAllStudent").subscribe((data:any)=>{
+        console.log('25/10')
+        console.log(data)
+        console.log("all students data");
+      console.log(data.allStudentRecords);
+       this.studentDetails=data.allStudentRecords;
+       console.log(this.studentDetails);
+    
     });
  
 
@@ -84,12 +94,14 @@ export class StudentmasterComponent implements OnInit
  
    getAllStudents()
    {
-    this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
-      console.log('25/10')
-    console.log(data.allBatches);
-     this.batchNames=data.allBatches;
-     console.log(this.batchNames);
-  });
+      //get student api call
+      this.http.get("http://localhost:3000/admin/getAllStudent").subscribe((data:any)=>{
+        console.log('25/10')
+        console.log(data)
+      console.log(data.allStudentRecords);
+       this.studentDetails=data.allStudentRecords;
+       console.log(this.studentDetails);
+    });
    }
  
  
@@ -105,15 +117,16 @@ export class StudentmasterComponent implements OnInit
        //post data logic ithe lihayache
        let dataToInput={
          
-         'firstname':this.addStudentForm.value.firstname,
-         'lastname':this.addStudentForm.value.lastname,
-         'emailid':this.addStudentForm.value.emailid,
-         'contactnumber':this.addStudentForm.value.contactnumber,
-         'batch':this.addStudentForm.value.batch,
-         'course':this.addStudentForm.value.course,
+         'firstName':this.addStudentForm.value.firstname,
+         'lastName':this.addStudentForm.value.lastname,
+         'emailId':this.addStudentForm.value.emailid,
+         'contactNumber':this.addStudentForm.value.contactnumber,
+         'batchName':this.addStudentForm.value.batch,
+         'courseName':this.addStudentForm.value.course,
          'status':this.addStudentForm.value.status
  
        }
+       console.log("ywefuasu")
        console.log(dataToInput);
  
        //post api call
@@ -124,17 +137,17 @@ export class StudentmasterComponent implements OnInit
       
             });
  
-      
-       //to close modal
-       let closeButton=document.getElementById("add_Form_Close_Btn");
-       closeButton?.click();
- 
+     
  
     
      
  
+            this.getAllStudents();
      //to reset the value of form(i.e reset all text fileds of form)
      this.addStudentForm.reset();
+
+     //to close modal
+     document.getElementById("add_Form_Close_Btn")?.click();
    }
  
  

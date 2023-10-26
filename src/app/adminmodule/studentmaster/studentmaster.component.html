@@ -27,8 +27,7 @@
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">First Name:</label>
                                 <input type="text" class="form-control" id="firstName" formControlName="firstname">
-                                <span *ngIf="addStudentForm.controls['firstname'].valid == false && addStudentForm.controls['lastname'].touched==true">Please Enter the First Name</span>
-                              </div>
+                               </div>
                           </div>
 
                           <div class="col-md-6">
@@ -57,13 +56,11 @@
                           <div class="col-md-6">
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Course</label>
-                                <select class="form-select" aria-label="Default select example" formControlName="batch">
-                                  <!-- <option *ngFor="let batch of batchNames" [ngValue]="batch">
-                                    {{batch}}
-                                  </option> -->
-                                  <option *ngFor="let value of courseDetails" [ngValue]="value">
-                                    {{value.courseName}}
+                                <select class="form-select" aria-label="Default select example" formControlName="course">
+                                  <option *ngFor="let course of courseDetails" [ngValue]="course.courseName">
+                                    {{course.courseName}}
                                   </option>
+                                  
                                 </select>
                               </div>
                           </div>
@@ -71,8 +68,8 @@
                           <div class="col-md-6">
                             <div class="mb-3">
                               <label for="recipient-name" class="col-form-label">Batch</label>
-                              <select class="form-select" aria-label="Default select example" formControlName="course">
-                                <option *ngFor="let batch of batchNames" [ngValue]="batch">
+                              <select class="form-select" aria-label="Default select example" formControlName="batch">
+                                <option *ngFor="let batch of batchDetails" [ngValue]="batch.name">
                                     {{batch.name}}
                                   </option>
                               </select>
@@ -109,6 +106,7 @@
       </div>
     </div>
      <!-- add student modal box end -->
+     
 
     <!-- Update student modal box start -->
   <div class="modal fade" id="updateStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
@@ -155,8 +153,8 @@
                   <div class="col-md-6">
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Course</label>
-                        <select class="form-select" aria-label="Default select example" formControlName="updatedbatch">
-                          <option *ngFor="let value of courseDetails" [ngValue]="value">
+                        <select class="form-select" aria-label="Default select example" formControlName="updatedcourse">
+                          <option *ngFor="let value of courseDetails" [ngValue]="value.courseName">
                             {{value.courseName}}
                           </option>
                           
@@ -168,9 +166,9 @@
                   <div class="col-md-6">
                     <div class="mb-3">
                       <label for="recipient-name" class="col-form-label">Batch</label>
-                      <select class="form-select" aria-label="Default select example" formControlName="updatedcourse">
-                        <option *ngFor="let batch of batchNames" [ngValue]="batch">
-                          {{batch}}
+                      <select class="form-select" aria-label="Default select example" formControlName="updatedbatch">
+                        <option *ngFor="let batch of batchDetails" [ngValue]="batch.name">
+                          {{batch.name}}
                         </option>
                        </select>
                     </div>
@@ -253,13 +251,26 @@
       <tbody *ngFor="let value of studentDetails;let counter=index">
         <tr>
           <th scope="row">{{counter+1}}</th>
-          <td>{{value.firstname}}</td>
-          <td>{{value.lastname}}</td>
-          <td>{{value.emailid}}</td>
-          <td>{{value.contactnumber}}</td>
-          <td>{{value.batch}}</td>
-          <td>{{value.course}}</td>
-          <td>{{value.status}}</td>
+          <td>{{value.firstName}}</td>
+          <td>{{value.lastName}}</td>
+          <td>{{value.emailId}}</td>
+          <td>{{value.contactNumber}}</td>
+          <td>{{value.batchName}}</td>
+          <td>{{value.courseName}}</td>
+
+
+
+
+
+          <ng-template [ngIf]="value.status" [ngIfElse]="InActiveStatus">
+            <td >Active</td>
+          </ng-template>
+          <ng-template #InActiveStatus>
+            <td >InActive</td>
+          </ng-template>
+         
+         
+          
           <td>
               <button class="me-1 action-button" (click)="onUpdate(value)" data-bs-toggle="modal" data-bs-target="#updateStudentModal">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

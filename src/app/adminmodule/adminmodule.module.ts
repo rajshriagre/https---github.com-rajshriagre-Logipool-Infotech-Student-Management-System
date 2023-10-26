@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermodule.component';
 
 import { BatchmastersComponent } from './batchmasters/batchmasters.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { BatchmastersComponent } from './batchmasters/batchmasters.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AppRoutingModule
   ],
   exports:[
     AdminmainComponent,
