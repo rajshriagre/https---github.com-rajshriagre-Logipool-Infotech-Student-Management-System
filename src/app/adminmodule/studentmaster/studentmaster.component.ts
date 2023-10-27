@@ -109,11 +109,23 @@ export class StudentmasterComponent implements OnInit
    addStudent()
    {   
      console.log("inside addStudent()");
+
+     let statusToInsert:boolean=false;
      
        //if form is valid then post form data in database
        console.log(this.addStudentForm);
        console.log(this.addStudentForm.value);
- 
+
+       if(this.addStudentForm.value.status == this.status[0])//i.e if(this.addStudentForm.value.status == Active)
+       {
+          statusToInsert=true;
+       }
+       else if(this.addStudentForm.value.status == this.status[1])//i,e else if(this.addStudentForm.value.status == InActive)
+       {
+          statusToInsert=false;
+
+       }
+
        //post data logic ithe lihayache
        let dataToInput={
          
@@ -123,7 +135,7 @@ export class StudentmasterComponent implements OnInit
          'contactNumber':this.addStudentForm.value.contactnumber,
          'batchName':this.addStudentForm.value.batch,
          'courseName':this.addStudentForm.value.course,
-         'status':this.addStudentForm.value.status
+         'status':statusToInsert
  
        }
        console.log("ywefuasu")
@@ -143,11 +155,11 @@ export class StudentmasterComponent implements OnInit
      
  
             this.getAllStudents();
+
+            document.getElementById("add_Form_Close_Btn")?.click();
      //to reset the value of form(i.e reset all text fileds of form)
      this.addStudentForm.reset();
 
-     //to close modal
-     document.getElementById("add_Form_Close_Btn")?.click();
    }
  
  
@@ -157,17 +169,25 @@ export class StudentmasterComponent implements OnInit
    onUpdate(data:any)
    { 
      console.log(data);
-     console.log(data.course);
-     console.log(data.batch);
+     console.log(data.courseName);
+     console.log(data.batchName);
  
      
-     this.updateStudentForm.controls['updatedfirstname'].setValue(data.firstname);
-     this.updateStudentForm.controls['updatedlastname'].setValue(data.lastname);
-     this.updateStudentForm.controls['updatedemailid'].setValue(data.emailid)
-     this.updateStudentForm.controls['updatedcontactnumber'].setValue(data.contactnumber)
-     this.updateStudentForm.controls['updatedbatch'].setValue(data.batch)
-     this.updateStudentForm.controls['updatedcourse'].setValue(data.course)
-     this.updateStudentForm.controls['updatedstatus'].setValue(data.status)
+     this.updateStudentForm.controls['updatedfirstname'].setValue(data.firstName);
+     this.updateStudentForm.controls['updatedlastname'].setValue(data.lastName);
+     this.updateStudentForm.controls['updatedemailid'].setValue(data.emailId)
+     this.updateStudentForm.controls['updatedcontactnumber'].setValue(data.contactNumber)
+     this.updateStudentForm.controls['updatedbatch'].setValue(data.batchName)
+     this.updateStudentForm.controls['updatedcourse'].setValue(data.courseName)
+
+     if(data.status==true)
+    {
+      this.updateStudentForm.controls['updatedstatus'].setValue(this.status[0]);
+    }
+    else if(data.status==false)
+    {
+      this.updateStudentForm.controls['updatedstatus'].setValue(this.status[1]);
+    }
      
  
      this.selectedId=data._id;
@@ -179,10 +199,34 @@ export class StudentmasterComponent implements OnInit
      console.log("inside update Student");
      console.log(this.updateStudentForm);
      console.log(this.updateStudentForm.value);
+      let statusToInsert:boolean=false;
      
+     if(this.updateStudentForm.value.updatedstatus == this.status[0])//i.e if(this.addStudentForm.value.status == Active)
+     {
+        statusToInsert=true;
+     }
+     else if(this.updateStudentForm.value.updatedstatus == this.status[1])//i,e else if(this.addStudentForm.value.status == InActive)
+     {
+        statusToInsert=false;
+
+     }
+
+
+     let bodydata :any={
+      firstName:this.updateStudentForm.value.updatedfirstname,
+      lastName:this.updateStudentForm.value.updatedlastname,
+      emailId:this.updateStudentForm.value.updatedemailid,
+      contactNumber:this.updateStudentForm.value.updatedcontactnumber,
+      courseName:this.updateStudentForm.value.updatedcourse,
+      batchName:this.updateStudentForm.value.updatedbatch,
+      status:statusToInsert
+     }
+     console.log(bodydata);
      //update api call
  
-     this.updateStudentForm.reset();
+    //  this.http.put<any>(`http://localhost:3000/admin/updateStudent/${this.selectedId}`,bodydata).subscribe((data:any)=>{
+    // console.log("From Backend" + data.message);})
+    //  this.updateStudentForm.reset();
    }
  
    //delete related code

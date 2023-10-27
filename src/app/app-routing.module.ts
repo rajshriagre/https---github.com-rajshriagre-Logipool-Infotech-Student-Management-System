@@ -20,45 +20,103 @@ import { StudentmasterComponent } from './adminmodule/studentmaster/studentmaste
 import { BatchmastersComponent } from './adminmodule/batchmasters/batchmasters.component';
 import { BatchtrainermoduleComponent } from './adminmodule/batchtrainermodule/batchtrainermodule.component';
 
-
-
 const routes: Routes = [
- {path:'',component:LoginComponent},
- {path:'home',component:HomeComponent,
- children:[
-  { 
-    path:"adminmain",component:AdminmainComponent,
-    children:[
-      
-        {path: '',component:CourcemasterComponent},
-        {path:'master', component:AdminmasternavbarComponent},
-        {path:'CourseMaster',component:CourcemasterComponent},
-        {path:'ModuleMaster',component:ModulemasterComponent},
-        {path:'ModuleTopicMaster',component:ModuletopicmasterComponent},
-        {path:'TrainerMaster',component:TrainermasterComponent},
-        {path:'StudentMaster',component:StudentmasterComponent},
-        {path:'batchmaster',component:BatchmastersComponent},
-        {path:'batchtrainermodule', component:BatchtrainermoduleComponent}
-        
-       
-      
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'home', component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: StudentDashBoardComponent
+      },
+      {
+        path: 'trainer',
+        component: TrainerComponent
+      },
+      {
+        path: 'batchmates',
+        component: BatchmatesComponent
+      },
+      {
+        path: 'dashboard',
+        component: StudentDashBoardComponent
+      },
+      {
+        path: 'assignment',
+        component: AssignmentComponent
+      },
+      {
+        path: 'examination',
+        component: ExaminationComponent
+      },
+      {
+        path: 'master',
+        loadChildren: () => import('./adminmodule/adminmodule.module').then(m => m.AdminmoduleModule)
+      }
     ]
+  },
 
-  }
-  ]},
- {path:'dashboard',component:StudentDashBoardComponent},
-  {path:'assignment',component:AssignmentComponent},
-  {path:'batchmates',component:BatchmatesComponent},
-  {path:'examination', component:ExaminationComponent},
-  {path:'topics', component:TopicsComponent},
+]
+
+//   children:[
+//    { 
+
+//      path:"adminmain",component:AdminmainComponent,
+//      children:[
+//          {path: '',component:CourcemasterComponent},
+//          {path:'master', component:AdminmasternavbarComponent},
+//          {path:'CourseMaster',component:CourcemasterComponent},
+//          {path:'ModuleMaster',component:ModulemasterComponent},
+//          {path:'ModuleTopicMaster',component:ModuletopicmasterComponent},
+//          {path:'TrainerMaster',component:TrainermasterComponent},
+//          {path:'StudentMaster',component:StudentmasterComponent},
+//          {path:'batchmaster',component:BatchmastersComponent},
+//          {path:'batchtrainermodule', component:BatchtrainermoduleComponent} 
+//      ]
+//    } ]},
+
+//    {path:'dashboard',component:StudentDashBoardComponent},
+//    {path:'assignment',component:AssignmentComponent},
+//    {path:'batchmates',component:BatchmatesComponent},
+//    {path:'examination', component:ExaminationComponent},
+//    {path:'topics', component:TopicsComponent},
+//    {path:'trainer', component:TrainerComponent},
+//    {path:'syllabus', component:SyllabusComponent},
+//    {path:'master',component:AdminmainComponent}
+//  ];
 
 
-  {path:'trainer', component:TrainerComponent},
-  {path:'syllabus', component:SyllabusComponent},
-  {path:'master',component:AdminmainComponent}
+// const routes: Routes = [
+//  {path:'',component:LoginComponent},
+//  {path:'home',component:HomeComponent,
 
+//  children:[
+//   { 
 
-];
+//     path:"adminmain",component:AdminmainComponent,
+//     children:[
+//         {path: '',component:CourcemasterComponent},
+//         {path:'master', component:AdminmasternavbarComponent},
+//         {path:'CourseMaster',component:CourcemasterComponent},
+//         {path:'ModuleMaster',component:ModulemasterComponent},
+//         {path:'ModuleTopicMaster',component:ModuletopicmasterComponent},
+//         {path:'TrainerMaster',component:TrainermasterComponent},
+//         {path:'StudentMaster',component:StudentmasterComponent},
+//         {path:'batchmaster',component:BatchmastersComponent},
+//         {path:'batchtrainermodule', component:BatchtrainermoduleComponent} 
+//     ]
+//   } ]},
+
+//   {path:'dashboard',component:StudentDashBoardComponent},
+//   {path:'assignment',component:AssignmentComponent},
+//   {path:'batchmates',component:BatchmatesComponent},
+//   {path:'examination', component:ExaminationComponent},
+//   {path:'topics', component:TopicsComponent},
+//   {path:'trainer', component:TrainerComponent},
+//   {path:'syllabus', component:SyllabusComponent},
+//   {path:'master',component:AdminmainComponent}
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

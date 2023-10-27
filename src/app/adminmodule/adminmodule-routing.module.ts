@@ -12,18 +12,19 @@ import { AdminmasternavbarComponent } from './adminmasternavbar/adminmasternavba
 import { BatchmastersComponent } from './batchmasters/batchmasters.component';
 
 const routes: Routes = [
-  // {path: '',component:AdminmasternavbarComponent},
-  // {path:'master', component:AdminmasternavbarComponent},
-  // {path:'CourseMaster',component:CourcemasterComponent},
-  // {path:'ModuleMaster',component:ModulemasterComponent},
-  // {path:'ModuleTopicMaster',component:ModuletopicmasterComponent},
-  // {path:'TrainerMaster',component:TrainermasterComponent},
-  // {path:'StudentMaster',component:StudentmasterComponent},
-  // {path:'batchmaster',component:BatchmastersComponent},
-  // {path:'batchtrainermodule', component:BatchtrainermoduleComponent}
-  
- 
-
+  {
+    path: '', component: AdminmasternavbarComponent,
+    children: [
+      { path: '', redirectTo: 'courseMaster', pathMatch: 'full' },
+      { path: 'courseMaster', component: CourcemasterComponent },
+      { path: 'moduleMaster', component: ModulemasterComponent },
+      { path: 'moduletopicMaster', component: ModuletopicmasterComponent },
+      { path: 'trainerMaster', component: TrainermasterComponent },
+      { path: 'studentMaster', component: StudentmasterComponent },
+      { path: 'batchMaster', component: BatchmastersComponent },
+      { path: 'batchtrainerModule', component: BatchtrainermoduleComponent }
+    ]
+  },
 ];
 
 @NgModule({
