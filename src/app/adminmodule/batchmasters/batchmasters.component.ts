@@ -101,11 +101,12 @@ export class BatchmastersComponent {
       console.log(resultData);
       console.log(resultData.message);
       console.log(resultData.status);
+      this.getAllBatches();
         
         
       });
     
-      this.getAllBatches();
+  
     //to reset the value of form.
     this.addBatchForm.reset();
 
@@ -138,8 +139,7 @@ export class BatchmastersComponent {
     let bodydata={
     
       name:this.updateBatchForm.value.updatedbatchname,
-      course
-      :this.updateBatchForm.value.updatedcoursename,
+      course:this.updateBatchForm.value.updatedcoursename,
       startDate:this.updateBatchForm.value.updatedstartdate,
       endDate:this.updateBatchForm.value.updatedenddate
 
@@ -151,11 +151,12 @@ export class BatchmastersComponent {
     //update api call
     this.http.put<any>( `http://localhost:3000/admin/updateBatch/${this.selectedId}`,bodydata).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
+      this.getAllBatches();
   });
 
      //to close the opened modal
      document.getElementById("close-btn")?.click();
-     this.getAllBatches();
+     
     //to reset the value of form(i.e reset all text fileds of form)
     this.updateBatchForm.reset();
 
@@ -179,10 +180,10 @@ export class BatchmastersComponent {
     //delete api call
     this.http.delete(`http://localhost:3000/admin/deleteBatch/${this.selectedId}`).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
-      
+      this.getAllBatches();
     });
 
-    this.getAllBatches();
+ 
     this.selectedId="";
 
   }

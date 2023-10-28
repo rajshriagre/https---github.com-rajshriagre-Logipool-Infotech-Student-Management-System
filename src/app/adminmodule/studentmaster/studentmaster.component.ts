@@ -83,6 +83,8 @@ export class StudentmasterComponent implements OnInit
         console.log(data)
         console.log("all students data");
       console.log(data.allStudentRecords);
+   
+
        this.studentDetails=data.allStudentRecords;
        console.log(this.studentDetails);
     
@@ -93,12 +95,16 @@ export class StudentmasterComponent implements OnInit
    }
  
    getAllStudents()
-   {
+   {  console.log("inside getAllStudent");
       //get student api call
       this.http.get("http://localhost:3000/admin/getAllStudent").subscribe((data:any)=>{
-        console.log('25/10')
-        console.log(data)
+      //   console.log('25/10')
+      //   console.log(data)
       console.log(data.allStudentRecords);
+
+      //first empty all array
+      // this.studentDetails=[];
+      //copy the array to studentDetails
        this.studentDetails=data.allStudentRecords;
        console.log(this.studentDetails);
     });
@@ -139,8 +145,8 @@ export class StudentmasterComponent implements OnInit
  
        }
        console.log("ywefuasu")
-      //  console.log(dataToInput);
- 
+       console.log(dataToInput);
+      
        //post api call
        this.http.post("http://localhost:3000/admin/addStudent", dataToInput).subscribe(  (resultData: any) => {
               console.log(resultData);
@@ -148,16 +154,18 @@ export class StudentmasterComponent implements OnInit
               console.log(resultData.message);
               console.log(resultData.status);
       
+            
+            this.getAllStudents();
+           
             });
  
-     
- 
+            document.getElementById("add_Form_Close_Btn")?.click();
+            this.addStudentForm.reset();
     
      
  
-            this.getAllStudents();
-    
-           this.addStudentForm.reset();
+            
+            
 
    }
  
@@ -226,16 +234,21 @@ export class StudentmasterComponent implements OnInit
      console.log(bodydata);
      //update api call
  
-     this.http.put<any>(`http://localhost:3000/admin/updateStudent/${this.selectedId}`,bodydata).subscribe((data:any)=>{
-    console.log("From Backend" + data.message);})
-
+    this.http.put<any>(`http://localhost:3000/admin/updateStudent/${this.selectedId}`,bodydata).subscribe((data:any)=>{
+    console.log("From Backend" + data.message);
     this.getAllStudents();
+
+  });
+
+    
      this.updateStudentForm.reset();
+     this.selectedId="";
    }
  
    //delete related code
    onDeleteStudent( id: any)
-   {
+   {  
+    console.log("inside onDeleteStudent")
     console.log(id);
  
     this.selectedId=id;
@@ -243,17 +256,19 @@ export class StudentmasterComponent implements OnInit
    }
    deleteStudent()
    {
- 
+    console.log("inside deleteStudent()")
     console.log(this.selectedId);
      //delete api call
      this.http.delete(`http://localhost:3000/admin/deleteStudent/${this.selectedId}`).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
       
+      this.getAllStudents();
+      this.selectedId="";
+    
     });
  
  
-    this.getAllStudents();
-    this.selectedId="";
+    
   
    }
  

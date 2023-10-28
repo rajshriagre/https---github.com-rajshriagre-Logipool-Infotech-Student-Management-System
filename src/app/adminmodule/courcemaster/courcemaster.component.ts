@@ -70,9 +70,9 @@ export class CourcemasterComponent implements OnInit {
     console.log(this.selectedId);
     this.http.delete(`http://localhost:3000/admin/deleteCourse/${this.selectedId}`).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
-      
+      this.getCourses();  
     });
-    this.getCourses();
+    
     this.selectedId="";
   
    }
@@ -92,14 +92,15 @@ export class CourcemasterComponent implements OnInit {
               console.log(resultData);
               console.log(resultData.message);
               console.log(resultData.status);
+              this.getCourses();
       
             });
 
           
+            document.getElementById("Add-Form-close-btn")?.click();
+          
 
-            this.getCourses();
-
-          // this.addCourseForm.reset();
+           this.addCourseForm.reset();
       
   }
 
@@ -134,13 +135,14 @@ export class CourcemasterComponent implements OnInit {
     // update api Call
     this.http.put<any>( `http://localhost:3000/admin/updateCourse/${this.selectedId}`,bodydata).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
+      this.getCourses();
   });
 
     
-   
+  document.getElementById("Edit-Form-close-btn")?.click();
     this.selectedId="";
     this.updateCourseForm.reset();
-    this.getCourses();
+    
   }
 
 

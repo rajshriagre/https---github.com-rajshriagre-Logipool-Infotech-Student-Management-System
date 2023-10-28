@@ -84,11 +84,12 @@ export class ModulemasterComponent implements OnInit{
         console.log(resultData);
         console.log(resultData.message);
         console.log(resultData.status);
+        this.getAllModules();
         
       });
 
       
-     this.getAllModules();
+     
      this.addModuleForm.reset();
   } 
 
@@ -114,6 +115,7 @@ deleteModule()
 
   this.http.delete(`http://localhost:3000/admin/deleteModule/${this.selectedId}`).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
+      this.getAllModules();
       
     });
 
@@ -143,15 +145,17 @@ updateModule()
 
   let bodydata :any={
     courseName:this.updateModuleForm.value.updatedcoursename,
-    courseDuration:this.updateModuleForm.value.updatedmodulename
+    moduleName:this.updateModuleForm.value.updatedmodulename
   };
   console.log(bodydata);
   //update module call api
    this.http.put<any>(`http://localhost:3000/admin/updateModule/${this.selectedId}`,bodydata).subscribe((data:any)=>{
-      console.log("From Backend" + data.message);})
+      console.log("From Backend" + data.message);
+      this.getAllModules();
+    })
      
       this.selectedId="";
-      this.getAllModules();
+      
       this.updateModuleForm.reset();
  
       

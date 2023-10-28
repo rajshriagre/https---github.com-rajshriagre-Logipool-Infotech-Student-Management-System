@@ -124,6 +124,7 @@ addModuleTopic()
     console.log(resultData);
         console.log(resultData.message);
         console.log(resultData.status);
+        this.getAllModuleTopics();
         
       });
 
@@ -136,7 +137,7 @@ addModuleTopic()
     closeButton?.click();
 
   
-    this.getAllModuleTopics();
+    
   //to reset the value of form(if we want to reset all the textfeilds of the form)
   this.addModuleTopicForm.reset();
 }
@@ -183,11 +184,14 @@ updateModuleTopic()
 
   //update api call
   this.http.put<any>(`http://localhost:3000/admin/updateTopic/${this.selectedId}`,bodydata).subscribe((data:any)=>{
-    console.log("From Backend" + data.message);})
+    console.log("From Backend" + data.message);
+  
+    this.getAllModuleTopics();
+  })
 
 
     this.selectedId="";
-    this.getAllModuleTopics();
+  
   this.updateModuleTopicForm.reset();
 }
 
@@ -206,11 +210,11 @@ deleteModuleTopic()
   
   this.http.delete(`http://localhost:3000/admin/deleteTopic/${this.selectedId}`).subscribe((data:any)=>{
       console.log("From Backend" + data.message);
-      
+      this.getAllModuleTopics();
     });
 
 
-  this.getAllModuleTopics();
+  
   this.selectedId="";
 }
 }
