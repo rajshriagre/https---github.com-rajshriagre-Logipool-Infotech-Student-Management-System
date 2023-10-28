@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class TrainermasterComponent {
   trainerDetails:any=[
-    {_id:"22",firstName:"shubham",lastName:"mayane",emailId:"shubham@gmail.com",contactNumber:"23234234123",status:"Active"}
+    {_id:"22",firstName:"Rajshri",lastName:"Agre",emailId:"rajshri@gmail.com",contactNumber:"9021370328",status:"Active"}
   ]
 
   //creating addTrainer Form object
@@ -21,7 +22,7 @@ export class TrainermasterComponent {
    selectedId:string="";
 
 
-  constructor()
+  constructor(public http: HttpClient)
   {
 
     //add Trainer Form Object creation start-----
@@ -65,13 +66,17 @@ export class TrainermasterComponent {
 
   //post api call start
 
+  this.http.post("http://localhost:3000/admin/addTrainer", dataToInsert).subscribe((resultData: any) => {
+    console.log(resultData);
+    console.log(resultData.message);
+    console.log(resultData.status);
+
+  });
   //post api call end
 
   this.addTrainerForm.reset();
 
-  //to close opened  modal box
-  let closeModalBoxBtn=document.getElementById("add_Form_Close_Btn");
-  closeModalBoxBtn?.click();
+
 
 
 
