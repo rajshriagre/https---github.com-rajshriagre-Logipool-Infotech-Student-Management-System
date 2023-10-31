@@ -10,6 +10,7 @@ import { SyllabusComponent } from './syllabus/syllabus.component';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { BatchtrainermoduleComponent } from './adminmodule/batchtrainermodule/batchtrainermodule.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'syllbus',
         component: SyllabusComponent
+      },
+      {
+        path: 'batchtrainermodule',
+        component: BatchtrainermoduleComponent
       },
       {
         path: 'master',

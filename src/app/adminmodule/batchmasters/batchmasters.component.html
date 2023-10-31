@@ -96,11 +96,11 @@
 <tbody *ngFor="let value of module;let counter=index">
 <tr>
 <td scope="row">{{counter+1}}</td>
-<td>{{value.course}}</td>
-<td>{{value.name}}</td>
+<td>{{value.courseName}}</td>
+<td>{{value.batchName}}</td>
 
-<td>{{value.startDate |date}}</td>
-<td>{{value.endDate | date}}</td>
+<td>{{value.startDate}}</td>
+<td>{{value.endDate}}</td>
 <td>
 <!-- update button -->
 <button class="btn" (click)="onUpdateBatch(value)" data-bs-toggle="modal" data-bs-target="#editBatchModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

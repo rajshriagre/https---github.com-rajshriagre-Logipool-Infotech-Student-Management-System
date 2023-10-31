@@ -21,8 +21,8 @@ const routes: Routes = [
       { path: 'moduletopicMaster', component: ModuletopicmasterComponent },
       { path: 'trainerMaster', component: TrainermasterComponent },
       { path: 'studentMaster', component: StudentmasterComponent },
-      { path: 'batchMaster', component: BatchmastersComponent },
-      { path: 'batchtrainerModule', component: BatchtrainermoduleComponent }
+      { path: 'batchMaster', component: BatchmastersComponent }
+      // { path: 'batchtrainerModule', component: BatchtrainermoduleComponent }
     ]
   },
 ];

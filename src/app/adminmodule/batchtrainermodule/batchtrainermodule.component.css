@@ -1,18 +1,4 @@
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: black;
-    background-color: #D6DDEF;
-}
-.nav-link {
-    color: white;
-    font-size: 15px;
-    border-radius: 0px !important;
-}
-#pills-tab{
-    background-color: black;
-}
-
-
 
 .formGroup{
     display: inline-block;
@@ -57,6 +43,59 @@
     width: 70%;
 }
 .modal-footer
+{
+    justify-content: center !important;
+}
+
+
+
+.btn-primary{
+    background-color: #d6ddef !important;
+    color: black;
+    border: 1px solid black;
+}
+
+/*css for buttons inside table*/
+.action-button{
+    background-color: white;
+    border: 0px;
+
+}
+
+
+
+/* modal box related properties*/
+
+.modal-header{
+    display: flex !important;
+    background-color: black;
+    color: white;
+
+}
+
+.formGroup{
+    display: inline-block;
+}
+
+.form-control{
+
+    display: inline-block !important;
+    width: 70%;
+}
+.col-form-label{
+    margin-right: 20px;
+    width: 24%;
+}
+
+.form-select{
+
+    display: inline-block !important;
+    width: 70%;
+}
+
+
+
+.modal-footer 
 {
     justify-content: center !important;
 }

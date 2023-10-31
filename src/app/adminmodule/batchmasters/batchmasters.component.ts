@@ -89,8 +89,8 @@ export class BatchmastersComponent {
 
     let bodydata={
   
-      course:this.addBatchForm.value.coursename,
-     name:this.addBatchForm.value.batchname,
+      courseName:this.addBatchForm.value.coursename,
+      batchName:this.addBatchForm.value.batchname,
       startDate:this.addBatchForm.value.startdate,
       endDate:this.addBatchForm.value.enddate
     }
@@ -138,8 +138,8 @@ export class BatchmastersComponent {
 
     let bodydata={
     
-      name:this.updateBatchForm.value.updatedbatchname,
-      course:this.updateBatchForm.value.updatedcoursename,
+      batchName:this.updateBatchForm.value.updatedbatchname,
+      courseName:this.updateBatchForm.value.updatedcoursename,
       startDate:this.updateBatchForm.value.updatedstartdate,
       endDate:this.updateBatchForm.value.updatedenddate
 
