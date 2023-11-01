@@ -41,14 +41,15 @@
                <div class="col-md-6">
                    <div class="mb-3">
                      <label for="recipient-name" class="col-form-label" style="width: 100%;">Batch Name:</label>
-                     <select class="form-select" aria-label="Default select example" formControlName="batchname">
-                       <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchName">
+                     <select   #batches (change)="getBatchById(batches.value)" class="form-select" aria-label="Default select example" formControlName="batchname">
+                       <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchame">
                            {{batch.batchName}}
                          </option>
                        </select>
                    </div>
                </div></div>
 
+               <!-- #batches (change)="getBatchById(batches.value)" -->
                
 
              <div class="row">
@@ -129,9 +130,10 @@
      <td>{{value.courseName}}</td>
      <td>{{value.batchName}}</td>
      <td>{{value.moduleName}}</td>
-     <td>{{value.trainerName}}</td>
-     <td>{{value.startdate}}</td>
-     <td>{{value.enddate}}</td>
+     <td>{{value.trainerFullName}}</td>
+     <td>{{value.startDate}}</td>
+     <td>{{value.endDate
+    }}</td>
      <td>
 
 

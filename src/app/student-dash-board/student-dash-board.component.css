@@ -6,7 +6,7 @@
 
 
 #notification{
-    height: 90vh;
+    height: 72vh;
     background:#ebebeb;
     border-radius: 4px;
     color: black;
@@ -36,7 +36,7 @@
 }
 
 #classannouncement{
-    height: 37vh;
+    height: 20vh;
     background: #ebebeb;
     border-radius: 4px;
     color: black;
@@ -46,7 +46,7 @@
 }
 
 #privateannouncement{
-    height: 37vh;
+    height: 20vh;
     background: #ebebeb;
     border-radius: 4px;
     color: black;

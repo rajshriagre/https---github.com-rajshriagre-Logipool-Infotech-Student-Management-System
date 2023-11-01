@@ -28,6 +28,8 @@ import { SyllabusService } from './syllabus.service';
 import { RouterModule } from '@angular/router';
 import { AdminmoduleModule } from './adminmodule/adminmodule.module';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 
 
@@ -50,6 +52,8 @@ import { HomeComponent } from './home/home.component';
     TrainerComponent,
     SyllabusComponent,
     HomeComponent,
+    ProfileComponent,
+    AdminHomeComponent,
   
   ],
   imports: [

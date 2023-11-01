@@ -33,6 +33,9 @@ export class BatchtrainermoduleComponent {
     trainerDetails:any=[];
 
     trainerName:any=[];
+    BatchDetailsById:any=[];
+    
+
 
     startDate:any="";
     endDate:any="";
@@ -45,6 +48,8 @@ export class BatchtrainermoduleComponent {
 
         'batchname':new FormControl(null,Validators.required),
         'coursename':new FormControl(null,Validators.required),
+        // '_id':new FormControl(null,Validators.required),
+  
         'modulename':new FormControl(null,Validators.required),
         'trainername':new FormControl(null,Validators.required),
         'startdate':new FormControl(null,Validators.required),
@@ -64,31 +69,19 @@ export class BatchtrainermoduleComponent {
     }
 
     ngOnInit(): void{
-    //   this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
-    //   console.log(data.allBatches);
-    //   console.log("Rajshri");
-    //    this.batchDetails=data.allBatches;
-    //    console.log(this.batchDetails);
-    //    for(let i=0;i<this.batchDetails.length;i++)
-    //    {
-       
-    //     console.log(this.batchDetails[i])
-        
-    //    }
-    // });
 
     this.http.get("http://localhost:3000/admin/getAllCourse").subscribe((data:any)=>{
       console.log(data.allCourses);
        this.courseDetails=data.allCourses;
     });
 
-    // this.http.get("http://localhost:3000/admin/getAllModule").subscribe((data:any)=>{
-    //   console.log(data);
-    //   this.moduleDetails=data.allModules;
-    //   console.log("rajshriii ")
-    //   console.log(this.moduleDetails)
-       
-    // });
+    this.http.get("http://localhost:3000/admin/getAllBatchTrainerModule").subscribe((data:any)=>{
+        console.log('25/10')
+        console.log(data)
+        this.batchtrainermoduleDetails=data.details;
+        console.log(this.batchtrainermoduleDetails)
+  });
+
 
     this.http.get("http://localhost:3000/admin/getAllTrainer").subscribe((data:any)=>{
       console.log('25/10')
@@ -103,18 +96,7 @@ export class BatchtrainermoduleComponent {
       console.log(this.trainerDetails[i].firstName+' '+this.trainerDetails[i].lastName);
       this.trainerName.push(this.trainerDetails[i].firstName+' '+this.trainerDetails[i].lastName);
      }
-     console.log(this.trainerName);
-  
-  });
-
-  this.http.get("http://localhost:3000/admin/getAllBatchTrainerModule").subscribe((data:any)=>{
-        console.log('25/10')
-        console.log(data)});
-      // // console.log(dat
-
-  
-      //get batchtrainermodule api call
-
+     console.log(this.trainerName);});
     }
 
     getBatch(data:any)
@@ -124,25 +106,39 @@ export class BatchtrainermoduleComponent {
       var selectedCourse:any={
         'courseName':this.addBatchTrainerModuleForm.value.coursename
       }
-      // let courseName = this.addBatchTrainerModuleForm.value.coursename;
 
-      // console.log(selectedCourse);
-      // let selectedCourse=this.addBatchTrainerModuleForm.value.coursename;
-
-      // this.http.get("http://localhost:3000/admin/getBatch", courseName).subscribe((data:any)=>{
-
-      // console.log(data)
-      // });
-      console.log("project")
-      console.log(this.addBatchTrainerModuleForm.value.coursename);
-      console.log(selectedCourse);
       let url="http://localhost:3000/admin/getBatch/"+selectedCourse.courseName;
       console.log(url);
       this.http.get(url).subscribe((data:any)=>{
         console.log('25/10')
-        console.log(data)
         this.batchDetails=data.batches;
+        for(let i=0; i>this.batchDetails.length;i++)
+        {
+          this.startDate.push(this.batchDetails[i].startDate);
+        }
+        console.log(this.startDate)
+
       });
+    }
+    getBatchById(data:any)
+    {
+      console.log("sakshi")
+      console.log(data);
+      var selectedBatchById:any={
+        'batchId':this.addBatchTrainerModuleForm.value.batchname
+      }
+     
+      console.log(selectedBatchById.batchId)
+      let url="http://localhost:3000/admin/getBatchById/"+selectedBatchById.batchId;
+      this.http.get(url).subscribe((data:any)=>
+      {
+        // this.BatchDetailsById=data;
+        console.log(data.batch[0].startDate);
+        console.log(data.batch[0].endDate);
+        this.startDate=data.batch[0].startDate,
+        this.endDate=data.batch[0].endDate
+      })
+      // console.log(this.BatchDetailsById)
     }
 
     getModule(data:any)
@@ -169,9 +165,10 @@ export class BatchtrainermoduleComponent {
        this.http.get("http://localhost:3000/admin/getAllBatchTrainerModule").subscribe((data:any)=>{
         console.log('25/10')
         console.log(data)
-      // // console.log(data.allStudentRecords);
-      //  this.trainerDetails=data.allTrainerRecords;
-      // //  console.log(this.studentDetails);
+        this.batchtrainermoduleDetails=data.details;
+        console.log(this.batchtrainermoduleDetails)
+
+   
     });
     }
 
@@ -183,7 +180,6 @@ export class BatchtrainermoduleComponent {
         //if form is valid then post data in database
         console.log(this.addBatchTrainerModuleForm);
         console.log(this.addBatchTrainerModuleForm.value);
-
         //post data logic
         let dataToInput={
         
@@ -191,8 +187,8 @@ export class BatchtrainermoduleComponent {
           'courseName':this.addBatchTrainerModuleForm.value.coursename,
           'moduleName':this.addBatchTrainerModuleForm.value.modulename,
           'trainerFullName':this.addBatchTrainerModuleForm.value.trainername,
-          'startDate':this.addBatchTrainerModuleForm.value.startdate,
-          'endDate':this.addBatchTrainerModuleForm.value.enddate
+          'startDate':this.startDate,
+          'endDate':this.endDate
         }
 
         //post api call
@@ -206,7 +202,7 @@ export class BatchtrainermoduleComponent {
               this.getAllBatchTrainerModule();
       
             });
-        this.batchtrainermoduleDetails.push(dataToInput);
+        // this.batchtrainermoduleDetails.push(dataToInput);
 
 
         //to close modal

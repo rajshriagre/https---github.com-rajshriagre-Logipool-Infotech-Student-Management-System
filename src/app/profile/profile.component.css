@@ -1,0 +1,29 @@
+#profile{
+    border: 1px solid rgba(129, 128, 128, 1);
+    border-radius: 0px 25px 0px 25px;
+    padding: 30px;
+    box-shadow: 3px 3px rgba(129, 128, 128, 1);
+}
+
+#details{
+    border: 1px solid rgba(129, 128, 128, 1);
+    border-radius: 0px 25px 0px 25px;
+    padding: 30px;
+    width: 63%;
+    margin-left: 25px;
+    height: 47vh;
+    box-shadow: 3px 3px rgba(129, 128, 128, 1);
+    
+}
+
+.fbox{
+    display: flex;
+    justify-content: space-between;
+}
+
+#editbtn{
+    border:none;
+    background-color: white;
+    color: rgba(0, 60, 177, 1);
+   
+}
