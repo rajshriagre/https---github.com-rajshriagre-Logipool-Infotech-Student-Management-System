@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { BatchtrainermoduleComponent } from './adminmodule/batchtrainermodule/batchtrainermodule.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: StudentDashBoardComponent
+        component: AdminHomeComponent
       },
       {
         path: 'trainer',
@@ -32,9 +33,13 @@ const routes: Routes = [
         path: 'batchmates',
         component: BatchmatesComponent
       },
+      // {
+      //   path: 'dashboard',
+      //   component: StudentDashBoardComponent
+      // },
       {
-        path: 'dashboard',
-        component: StudentDashBoardComponent
+        path: 'adminhome',
+        component: AdminHomeComponent
       },
       {
         path: 'assignment',

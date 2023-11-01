@@ -42,7 +42,7 @@
                    <div class="mb-3">
                      <label for="recipient-name" class="col-form-label" style="width: 100%;">Batch Name:</label>
                      <select   #batches (change)="getBatchById(batches.value)" class="form-select" aria-label="Default select example" formControlName="batchname">
-                       <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchame">
+                       <option *ngFor="let batch of batchDetails" [ngValue]="batch._id">
                            {{batch.batchName}}
                          </option>
                        </select>
