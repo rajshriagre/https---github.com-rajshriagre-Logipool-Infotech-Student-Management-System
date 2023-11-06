@@ -261,9 +261,16 @@ export class BatchtrainermoduleComponent {
     {
       console.log(this.selectedId);
       //delete api call
+      console.log(this.selectedId);
+    this.http.delete(`http://localhost:3000/admin/deleteBatchTrainerModule/${this.selectedId}`).subscribe((data:any)=>{
+      console.log("From Backend" + data.message);
+      this.getAllBatchTrainerModule(); 
+    });
+    
+    this.selectedId="";
 
 
-      this.getAllBatchTrainerModule();
+      
       this.selectedId="";
     }
 }

@@ -30,13 +30,6 @@ export class LoginComponent {
      });
    }
 
-
-
-  
-
-
- 
-
  OnSubmit()
  {  
   console.log("inside onSubmit");
