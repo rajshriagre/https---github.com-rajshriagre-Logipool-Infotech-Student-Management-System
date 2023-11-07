@@ -56,11 +56,12 @@
                           <div class="col-md-6">
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Course</label>
-                                <select class="form-select" aria-label="Default select example" formControlName="course">
-                                  <option *ngFor="let course of courseDetails" [ngValue]="course.courseName">
-                                    {{course.courseName}}
-                                  </option>
-                                  
+  
+
+                                <select (change)="loadBatchesAndModulesInSelectBox()" class="form-select" aria-label="Default select example" formControlName="course">
+                                  <option *ngFor="let course of courseDetails" [ngValue]="course.courseName" >
+                                  {{course.courseName}}
+                                   </option>
                                 </select>
                               </div>
                           </div>
@@ -69,8 +70,8 @@
                             <div class="mb-3">
                               <label for="recipient-name" class="col-form-label">Batch</label>
                               <select class="form-select" aria-label="Default select example" formControlName="batch">
-                                <option *ngFor="let batch of batchDetails" [ngValue]="batch.name">
-                                    {{batch.name}}
+                                <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchName">
+                                    {{batch.batchName}}
                                   </option>
                               </select>
                             </div>

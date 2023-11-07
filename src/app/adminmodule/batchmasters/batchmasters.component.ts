@@ -65,6 +65,8 @@ export class BatchmastersComponent {
     });
   }
 
+  
+
   //to render table data
   getAllBatches()
   {   

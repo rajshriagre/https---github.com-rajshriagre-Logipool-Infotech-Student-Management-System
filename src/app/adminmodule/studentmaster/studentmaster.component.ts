@@ -72,10 +72,10 @@ export class StudentmasterComponent implements OnInit
       });
 
       this.http.get("http://localhost:3000/admin/getAllBatch").subscribe((data:any)=>{
+        console.log("sakshi")
       console.log(data);
       console.log(data.allBatches);
-       this.batchDetails=data.allBatches
-       ;
+       this.batchDetails=data.allBatches;
     });
 
       this.http.get("http://localhost:3000/admin/getAllStudent").subscribe((data:any)=>{
@@ -93,6 +93,31 @@ export class StudentmasterComponent implements OnInit
 
  
    }
+
+   loadBatchesAndModulesInSelectBox()
+  {
+    //logic to load batch names in batches Select box
+    let selectedCourse=this.addStudentForm.value.course
+    console.log(selectedCourse);
+    this.http.get("http://localhost:3000/admin/getBatch/"+selectedCourse).subscribe((data:any)=>{
+
+     console.log(data)
+     this.batchDetails=data.batches;
+     });
+
+  //    //logic to load module names in module select box
+  //   console.log(selectedCourse);
+  //    let url="http://localhost:3000/admin/getModule/"+selectedCourse;
+
+  //  this.http.get(url).subscribe((data:any)=>{
+  //    // console.log('25/10')
+  //    console.log(data)
+  //    this.moduleDetails=data.module;
+  //  });
+
+
+  }
+
  
    getAllStudents()
    {  console.log("inside getAllStudent");

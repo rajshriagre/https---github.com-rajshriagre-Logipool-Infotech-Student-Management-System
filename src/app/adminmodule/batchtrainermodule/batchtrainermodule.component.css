@@ -1,54 +1,4 @@
 
-
-.formGroup{
-    display: inline-block;
-}
-.form-control{
-    display: inline-block !important;
-    width: 90%;
-}
-.col-form-label{
-    margin-right: 30px;
-    width: 34%;
-}
-.form-select{
-    display: inline-block !important;
-    width: 90%;
-}
-.modal-footer
-{
-    justify-content: center !important;
-}
-
-
-
-.modal-header{
-    display: flex !important;
-    background-color: black;
-    color: white;
-}
-.formGroup{
-    display: inline-block;
-}
-.form-control{
-    display: inline-block !important;
-    width: 70%;
-}
-.col-form-label{
-    margin-right: 20px;
-    width: 24%;
-}
-.form-select{
-    display: inline-block !important;
-    width: 70%;
-}
-.modal-footer
-{
-    justify-content: center !important;
-}
-
-
-
 .btn-primary{
     background-color: #d6ddef !important;
     color: black;
@@ -80,18 +30,24 @@
 .form-control{
 
     display: inline-block !important;
-    width: 70%;
+    width: 61%;
 }
 .col-form-label{
     margin-right: 20px;
-    width: 24%;
+    width: 31%;
 }
 
 .form-select{
 
     display: inline-block !important;
-    width: 70%;
+    width: 61%;
 }
+
+#startdate #enddate{
+    display: inline-block !important;
+    width: 61%;
+}
+
 
 
 
@@ -99,3 +55,10 @@
 {
     justify-content: center !important;
 }
+.first{
+    background-color: aquamarine;
+}
+
+
+
+

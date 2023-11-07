@@ -20,6 +20,7 @@ export class ModuletopicmasterComponent {
 
   //dummy data
   moduletopicDetails:any=[];
+  updatedmoduletopicDetails:any=[];
 
 
   //for "course" select box in modal box
@@ -143,6 +144,19 @@ addModuleTopic()
 }
 
 
+loadBatchesAndModulesInSelectBox()
+{
+  let selectedCourse=this.addModuleTopicForm.value.coursename
+  console.log("rahul")
+  console.log(selectedCourse);
+  let url="http://localhost:3000/admin/getModule/"+selectedCourse;
+
+this.http.get(url).subscribe((data:any)=>{
+  console.log('25/10')
+  console.log(data)
+  this.moduleDetails=data.module;
+});
+}
 
 //update ModuleTopic Logic
 
@@ -186,6 +200,8 @@ updateModuleTopic()
   this.http.put<any>(`http://localhost:3000/admin/updateTopic/${this.selectedId}`,bodydata).subscribe((data:any)=>{
     console.log("From Backend" + data.message);
   
+    this.updatedmoduletopicDetails=data.module
+
     this.getAllModuleTopics();
   })
 

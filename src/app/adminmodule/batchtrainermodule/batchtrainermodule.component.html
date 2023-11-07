@@ -27,8 +27,8 @@
 
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label" style="width: 100%;">Course Name:</label>
-                  <select #courses (change)="getBatch(courses.value)" (change)="getModule(courses.value)" class="form-select" aria-label="Default select example" formControlName="coursename">
+                  <label for="recipient-name" class="col-form-label">Course Name:</label>
+                  <select (change)="loadBatchesAndModulesInSelectBox()" class="form-select" aria-label="Default select example" formControlName="coursename">
                     <option *ngFor="let course of courseDetails" [ngValue]="course.courseName" >
                     {{course.courseName}}
                      </option>
@@ -40,33 +40,37 @@
 
                <div class="col-md-6">
                    <div class="mb-3">
-                     <label for="recipient-name" class="col-form-label" style="width: 100%;">Batch Name:</label>
-                     <select   #batches (change)="getBatchById(batches.value)" class="form-select" aria-label="Default select example" formControlName="batchname">
+                     <label for="recipient-name" class="col-form-label">Batch Name:</label>
+                     <select class="form-select" (change)="getBatchDetailsById()" aria-label="Default select example" formControlName="batchname">
                        <option *ngFor="let batch of batchDetails" [ngValue]="batch._id">
                            {{batch.batchName}}
                          </option>
                        </select>
                    </div>
-               </div></div>
+               </div>
+              
+              </div>
 
-               <!-- #batches (change)="getBatchById(batches.value)" -->
                
 
              <div class="row">
                <div class="col-md-6">
-                   <div class="mb-3">
-                   <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name:</label>
-                     <select class="form-select" aria-label="Default select example" formControlName="modulename">
-                         <option *ngFor="let module of moduleDetails" [ngValue]="module.moduleName" >
-                           {{module.moduleName}}
-                         </option>
-                       </select>
-                   </div>
+
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Module Name:</label>
+                  <select class="form-select" aria-label="Default select example" formControlName="modulename">
+                        <option *ngFor="let module of moduleDetails" [ngValue]="module.moduleName" >
+                          {{module.moduleName}}
+                        </option>
+                      </select>
+                </div>
+                 
+                   
                </div>
 
                <div class="col-md-6">
                  <div class="mb-3">
-                   <label for="recipient-name" class="col-form-label" style="width: 100%;">Trainer Name:</label>
+                   <label for="recipient-name" class="col-form-label">Trainer Name:</label>
                     <select class="form-select" aria-label="Default select example" formControlName="trainername">
                      <option *ngFor="let trainer of trainerName" [ngValue]="trainer">
                        {{trainer}}
@@ -76,33 +80,31 @@
                </div>
              </div>
 
-             <!-- <div class="row">
+             <div class="row">
                <div class="col-md-6">
-                   <div class="mb-3">
-                     <label for="recipient-name" class="col-form-label" style="width: 100%;">Start-Date:</label>
-                     <select class="form-select" aria-label="Default select example" formControlName="trainername">
-                      <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchName">
-                        {{batch.startDate}}
-                      </option>
-                      </select>
-                   </div>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Start-Date:</label>
+                      <input type="date" class="form-control" id="startdate" formControlName="startdate" readonly>
+                    </div>
                </div>
 
                <div class="col-md-6">
                  <div class="mb-3">
-                   <label for="recipient-name" class="col-form-label" style="width: 100%;">End-Date:</label>
-                   <input type="date" class="form-control" id="enddate" formControlName="enddate">
+                     <label for="recipient-name" class="col-form-label" >End-Date:</label>
+                    <input type="date" class="form-control" id="enddate" formControlName="enddate" readonly>
                  </div>
                </div>
-             </div> -->
-
              </div>
+             <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Add Batch-Trainer-Module</button>
+            </div>
+             
+            </div>
+             
              </div>
 
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-           <button type="submit" class="btn btn-dark">Add Batch-Trainer-Module</button>
-         </div>
+         
      </form>
 
        </div>
@@ -121,19 +123,18 @@
      <th scope="col" style="color: gray;">Trainer Name</th>
      <th scope="col" style="color: gray;">Start-Date</th>
      <th scope="col" style="color: gray;">End-Date</th>
-     <th scope="col" style="color: gray;">Action</th>
+     <th scope="col" style="color: rgb(86, 79, 79);">Action</th>
    </tr>
  </thead>
- <tbody *ngFor="let value of batchtrainermoduleDetails;let counter=index">
+ <tbody *ngFor="let value of batchTrainerModuleDetails;let counter=index">
    <tr>
      <th scope="row">{{counter+1}}</th>
      <td>{{value.courseName}}</td>
      <td>{{value.batchName}}</td>
      <td>{{value.moduleName}}</td>
      <td>{{value.trainerFullName}}</td>
-     <td>{{value.startDate}}</td>
-     <td>{{value.endDate
-    }}</td>
+     <td>{{value.startDate | date:"mediumDate"}}</td>
+     <td>{{value.endDate  | date:"mediumDate"}}</td>
      <td>
 
 
@@ -164,7 +165,7 @@
 
                       <div class="col-md-6">
                         <div class="mb-3">
-                          <label for="recipient-name" class="col-form-label " style="width: 100%;">Course Name:</label>
+                          <label for="recipient-name" class="col-form-label " >Course Name:</label>
                           <select class="form-select" aria-label="Default select example" formControlName="updatedcoursename">
                            <option *ngFor="let course of courseDetails" [ngValue]="course.courseName">
                             {{course.courseName}}
@@ -175,7 +176,7 @@
 
                        <div class="col-md-6">
                            <div class="mb-3">
-                             <label for="recipient-name" class="col-form-label" style="width: 100%;">Batch Name:</label>
+                             <label for="recipient-name" class="col-form-label" >Batch Name:</label>
                              <select class="form-select" aria-label="Default select example" formControlName="updatedbatchname">
                                <option *ngFor="let batch of batchDetails" [ngValue]="batch.batchName">
                                  {{batch.batchName}}
@@ -190,7 +191,7 @@
                      <div class="row">
                        <div class="col-md-6">
                            <div class="mb-3">
-                             <label for="recipient-name" class="col-form-label" style="width: 100%;">Module Name:</label>
+                             <label for="recipient-name" class="col-form-label">Module Name:</label>
                              <select class="form-select" aria-label="Default select example" formControlName="updatedmodulename">
                                 <option *ngFor="let module of moduleDetails" [ngValue]="module.moduleName">
                                  {{module.moduleName}}
@@ -201,7 +202,7 @@
                        
                        <div class="col-md-6">
                          <div class="mb-3">
-                           <label for="recipient-name" class="col-form-label " style="width: 100%;">Trainer Name:</label>
+                           <label for="recipient-name" class="col-form-label " >Trainer Name:</label>
                            <select class="form-select" aria-label="Default select example" formControlName="updatedtrainername">
                             <option *ngFor="let trainer of trainerName" [ngValue]="trainer">
                               {{trainer}}
@@ -214,14 +215,14 @@
                      <div class="row">
                        <div class="col-md-6">
                            <div class="mb-3">
-                             <label for="recipient-name" class="col-form-label" style="width: 100%;">Start-Date:</label>
+                             <label for="recipient-name" class="col-form-label" >Start-Date:</label>
                              <input type="date" class="form-control" id="startdate" formControlName="updatedstartdate">
                            </div>
                        </div>
 
                        <div class="col-md-6">
                          <div class="mb-3">
-                           <label for="recipient-name" class="col-form-label" style="width: 100%;">End-Date:</label>
+                           <label for="recipient-name" class="col-form-label" >End-Date:</label>
                            <input type="date" class="form-control" id="enddate" formControlName="updatedenddate">
                          </div>
                        </div>
