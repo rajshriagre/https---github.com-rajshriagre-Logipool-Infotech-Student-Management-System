@@ -47,6 +47,7 @@ export class ModulemasterComponent implements OnInit{
 
     //for rendering in table
     this.http.get("http://localhost:3000/admin/getAllModule").subscribe((data:any)=>{
+      console.log("gsadj")
       console.log(data);
       this.module=data.allModules;
       console.log("rajshriii ")

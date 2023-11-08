@@ -158,6 +158,21 @@ this.http.get(url).subscribe((data:any)=>{
 });
 }
 
+
+updateBatchesAndModulesInSelectBox()
+{
+  let updatedselectedCourse=this.updateModuleTopicForm.value.updatedcoursename
+  console.log("rahulgsdh")
+  console.log(updatedselectedCourse);
+  let url="http://localhost:3000/admin/getModule/"+updatedselectedCourse;
+
+this.http.get(url).subscribe((data:any)=>{
+  console.log('25/10/2023')
+  console.log(data)
+  this.updatedmoduletopicDetails=data.module;
+  console.log(this.updatedmoduletopicDetails)
+});
+}
 //update ModuleTopic Logic
 
 onUpdate(data:any)

@@ -15,7 +15,8 @@ import { BatchtrainermoduleComponent } from './batchtrainermodule/batchtrainermo
 
 import { BatchmastersComponent } from './batchmasters/batchmasters.component';
 // import { AppRoutingModule } from '../app-routing.module';
-
+import {FullCalendarModule} from '@fullcalendar/angular';
+import { AdmincalendarComponent } from './admincalendar/admincalendar.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BatchmastersComponent } from './batchmasters/batchmasters.component';
     StudentmasterComponent,
     TrainermasterComponent,
     BatchtrainermoduleComponent,
-    BatchmastersComponent
+    BatchmastersComponent,
+    AdmincalendarComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,8 @@ import { BatchmastersComponent } from './batchmasters/batchmasters.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+  
+    FullCalendarModule
     // AppRoutingModule
   ],
   exports:[

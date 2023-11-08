@@ -13,12 +13,12 @@ import { StudentDashBoardComponent } from './student-dash-board/student-dash-boa
 import { BatchmatesComponent } from './batchmates/batchmates.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExaminationComponent } from './examination/examination.component';
 import { TopicsComponent } from './topics/topics.component';
 import { TrainerComponent } from './trainer/trainer.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+// import {MatButtonModule} from '@angular/material/button';
+// import {MatInputModule} from '@angular/material/input';
 import { LogipoolService } from './logipool.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -30,6 +30,17 @@ import { AdminmoduleModule } from './adminmodule/adminmodule.module';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentNavbarComponent } from './student-navbar/student-navbar.component';
+import { StudentSidebarComponent } from './student-sidebar/student-sidebar.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { TrainerHomeComponent } from './trainer-home/trainer-home.component';
+import { TrainerNavbarComponent } from './trainer-navbar/trainer-navbar.component';
+import { TrainerSidebarComponent } from './trainer-sidebar/trainer-sidebar.component';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignment.component';
+
 
 
 
@@ -54,6 +65,17 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     HomeComponent,
     ProfileComponent,
     AdminHomeComponent,
+    LandingpageComponent,
+    StudentHomeComponent,
+    StudentNavbarComponent,
+    StudentSidebarComponent,
+    AdminProfileComponent,
+    TrainerHomeComponent,
+    TrainerNavbarComponent,
+    TrainerSidebarComponent,
+    TrainerDashboardComponent,
+    TrainerAssignmentComponent,
+   
   
   ],
   imports: [
@@ -61,9 +83,9 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
-    MatButtonModule,
-    MatInputModule,
+    // NgbModule,
+    // MatButtonModule,
+    // MatInputModule,
     HttpClientModule,
     RouterModule,
     AdminmoduleModule
@@ -71,10 +93,10 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 
   ],
-  exports: [
-    MatButtonModule,
-    MatInputModule,
-    ],
+  // exports: [
+  //   MatButtonModule,
+  //   MatInputModule,
+  //   ],
   providers: [
     LogipoolService,
     SyllabusService

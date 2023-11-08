@@ -13,10 +13,18 @@ import { HomeComponent } from './home/home.component';
 import { BatchtrainermoduleComponent } from './adminmodule/batchtrainermodule/batchtrainermodule.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { TrainerHomeComponent } from './trainer-home/trainer-home.component';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { AdmincalendarComponent } from './adminmodule/admincalendar/admincalendar.component';
+import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignment.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'landingpage', pathMatch: 'full' },
+  {path:'landingpage',component:LandingpageComponent},
   { path: 'login', component: LoginComponent },
   {
     path: 'home', component: HomeComponent,
@@ -26,13 +34,17 @@ const routes: Routes = [
         component: AdminHomeComponent
       },
       {
-        path: 'trainer',
-        component: TrainerComponent
+        path: 'admincalendar',
+        component: AdmincalendarComponent
       },
-      {
-        path: 'batchmates',
-        component: BatchmatesComponent
-      },
+      // {
+      //   path: 'trainer',
+      //   component: TrainerComponent
+      // },
+      // {
+      //   path: 'batchmates',
+      //   component: BatchmatesComponent
+      // },
       // {
       //   path: 'dashboard',
       //   component: StudentDashBoardComponent
@@ -41,25 +53,25 @@ const routes: Routes = [
         path: 'adminhome',
         component: AdminHomeComponent
       },
-      {
-        path: 'assignment',
-        component: AssignmentComponent
-      },
-      {
-        path: 'examination',
-        component: ExaminationComponent
-      },
-      {
-        path: 'syllbus',
-        component: SyllabusComponent
-      },
+      // {
+      //   path: 'assignment',
+      //   component: AssignmentComponent
+      // },
+      // {
+      //   path: 'examination',
+      //   component: ExaminationComponent
+      // },
+      // {
+      //   path: 'syllbus',
+      //   component: SyllabusComponent
+      // },
       {
         path: 'batchtrainermodule',
         component: BatchtrainermoduleComponent
       },
       {
-        path: 'profile',
-        component: ProfileComponent
+        path: 'adminprofile',
+        component: AdminProfileComponent
       },
       {
         path: 'master',
@@ -67,6 +79,68 @@ const routes: Routes = [
       }
     ]
   },
+
+  { path: 'studenthome', component: StudentHomeComponent ,
+  children: [
+    {
+      path: '',
+      component: StudentDashBoardComponent
+    },
+    {
+      path: 'trainer',
+      component: TrainerComponent
+    },
+    {
+      path: 'batchmates',
+      component: BatchmatesComponent
+    },
+    {
+      path: 'assignment',
+      component: AssignmentComponent
+    },
+    {
+      path: 'examination',
+      component: ExaminationComponent
+    },
+    {
+      path: 'syllbus',
+      component: SyllabusComponent
+    },
+    {
+      path: 'dashboard',
+        component: StudentDashBoardComponent
+       },
+       {
+          path: 'syllbus',
+          component: SyllabusComponent
+        },
+        {
+          path: 'profile',
+          component: ProfileComponent
+        },
+        {
+          path:'topic',
+          component:TopicsComponent
+        }
+]},
+
+{ path: 'trainerhome', component: TrainerHomeComponent,
+children: [
+  {
+    path: '',
+    component: TrainerDashboardComponent
+  },
+
+  {
+    path:'trainerdashboard',
+    component:TrainerDashboardComponent
+  },
+  {
+    path:'trainerassignment',
+    component:TrainerAssignmentComponent
+  }
+]
+}
 
 ]
 
