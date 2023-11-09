@@ -20,6 +20,9 @@ import { TrainerHomeComponent } from './trainer-home/trainer-home.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { AdmincalendarComponent } from './adminmodule/admincalendar/admincalendar.component';
 import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignment.component';
+import { StudentCalenderComponent } from './student-calender/student-calender.component';
+import { TrainerCalenderComponent } from './trainer-calender/trainer-calender.component';
+import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
 
 
 const routes: Routes = [
@@ -121,7 +124,12 @@ const routes: Routes = [
         {
           path:'topic',
           component:TopicsComponent
+        },
+        {
+          path:'calender',
+          component:StudentCalenderComponent
         }
+        
 ]},
 
 { path: 'trainerhome', component: TrainerHomeComponent,
@@ -138,6 +146,14 @@ children: [
   {
     path:'trainerassignment',
     component:TrainerAssignmentComponent
+  },
+  {
+    path:'calender',
+    component:TrainerCalenderComponent
+  },
+  {
+    path:'tarinerprofile',
+    component:TrainerProfileComponent
   }
 ]
 }

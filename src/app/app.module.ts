@@ -40,6 +40,10 @@ import { TrainerNavbarComponent } from './trainer-navbar/trainer-navbar.componen
 import { TrainerSidebarComponent } from './trainer-sidebar/trainer-sidebar.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignment.component';
+import { StudentCalenderComponent } from './student-calender/student-calender.component';
+import { TrainerCalenderComponent } from './trainer-calender/trainer-calender.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
 
 
 
@@ -75,6 +79,9 @@ import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignm
     TrainerSidebarComponent,
     TrainerDashboardComponent,
     TrainerAssignmentComponent,
+    StudentCalenderComponent,
+    TrainerCalenderComponent,
+    TrainerProfileComponent,
    
   
   ],
@@ -88,7 +95,8 @@ import { TrainerAssignmentComponent } from './trainer-assignment/trainer-assignm
     // MatInputModule,
     HttpClientModule,
     RouterModule,
-    AdminmoduleModule
+    AdminmoduleModule,
+    FullCalendarModule
    
 
 

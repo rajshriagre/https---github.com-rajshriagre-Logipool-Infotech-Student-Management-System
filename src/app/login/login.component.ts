@@ -32,38 +32,39 @@ export class LoginComponent {
       "password": ['', Validators.required]
   
      });
+     
    }
 
    
 
    ngOnInit(): void{
-    console.log(localStorage.getItem('token'))
+    // console.log(localStorage.getItem('token'))
     
-    //get batchtrainermodule api call
-    this.http.get("http://localhost:3000/student/getStudent/"+localStorage.getItem('token')).subscribe((data:any)=>{
+    // //get batchtrainermodule api call
+    // this.http.get("http://localhost:3000/student/getStudent/"+localStorage.getItem('token')).subscribe((data:any)=>{
 
-    console.log("Tushar")
-    console.log(data.result)
-     console.log(data.result[0].courseName)
-     localStorage.setItem('courseName',data.result[0].courseName);
-     localStorage.setItem('batchName',data.result[0].batchName);
-     localStorage.setItem('firstName',data.result[0].firstName);
-     localStorage.setItem('lastName',data.result[0].lastName);
-     localStorage.setItem('emailId',data.result[0].emailId);
-     console.log(data.result[0].firstName);
-     console.log(data.result[0].lastName)
+    // console.log("Tushar")
+    // console.log(data.result)
+    //  console.log(data.result[0].courseName)
+    //  localStorage.setItem('courseName',data.result[0].courseName);
+    //  localStorage.setItem('batchName',data.result[0].batchName);
+    //  localStorage.setItem('firstName',data.result[0].firstName);
+    //  localStorage.setItem('lastName',data.result[0].lastName);
+    //  localStorage.setItem('emailId',data.result[0].emailId);
+    //  console.log(data.result[0].firstName);
+    //  console.log(data.result[0].lastName)
 
-    //  console.log(data[0]);
-    //  console.log(data[0].result);
+    // //  console.log(data[0]);
+    // //  console.log(data[0].result);
 
-    //  this.userDetails=data.batches;
-     });
+    // //  this.userDetails=data.batches;
+    //  });
 
-     this.http.get("http://localhost:3000/student/getBatchmates/"+localStorage.getItem('courseName')+"/"+localStorage.getItem('batchName')).subscribe((data:any)=>{
+    //  this.http.get("http://localhost:3000/student/getBatchmates/"+localStorage.getItem('courseName')+"/"+localStorage.getItem('batchName')).subscribe((data:any)=>{
 
-     console.log(data)
-    //  this.userDetails=data.batches;
-     });
+    //  console.log(data)
+    // //  this.userDetails=data.batches;
+    //  });
     }
  
 
@@ -78,13 +79,14 @@ export class LoginComponent {
   //  }
  OnSubmit()
  {  
-  console.log("inside onSubmit");
+
   console.log(this.loginForm.value);
 
   let bodydata ={
     emailId:this.loginForm.value.email,
     password:this.loginForm.value.password
   };
+
 
   this.http.post("http://localhost:3000/user/login", bodydata).subscribe(  (resultData: any) => {
     console.log(resultData);
@@ -102,32 +104,71 @@ export class LoginComponent {
     console.log(localStorage.getItem('token'))
   
 
+    this.http.get("http://localhost:3000/student/getStudent/"+localStorage.getItem('token')).subscribe((data:any)=>{
+
+    console.log("Tushar")
+    console.log(data.result)
+     console.log(data.result[0].courseName)
+     localStorage.setItem('courseName',data.result[0].courseName);
+     localStorage.setItem('batchName',data.result[0].batchName);
+     localStorage.setItem('firstName',data.result[0].firstName);
+     localStorage.setItem('lastName',data.result[0].lastName);
+     localStorage.setItem('emailId',data.result[0].emailId);
+
+     console.log("--------------------------");
+     
+     console.log(data.result[0].firstName);
+     console.log(data.result[0].lastName);
+     console.log("--------------------------");
+
+     console.log(localStorage.getItem('firstName'));
+     console.log(localStorage.getItem('lastName'));
+
+     console.log("--------------------------");
 
 
-    if (this.userRole=="Trainer") 
+     
+   
+  
+     this.userDetails=data.batches;
+     });
+
+
+     if (this.userRole=="Trainer") 
     {
-       this.authService.isLoggedIn = true;
-       this.router.navigateByUrl('/trainerhome');
+      this.authService.isLoggedIn = true;
+      this.router.navigateByUrl('/trainerhome');
 
-    } 
+     } 
 
-    else if(this.userRole=="Student")
-    {
+   else if(this.userRole=="Student")
+     {
 
       this.router.navigateByUrl('/studenthome');
-    }
+     }
     
     else if(this.userRole=="Admin")
-    {
+     {
 
       this.router.navigateByUrl('/home');
-    }
-    else
-     {
-      alert("Incorrect Email or Password");
-      console.log("Errror login");
-    }
+     }
+     else
+      {
+       alert("Incorrect Email or Password");
+       console.log("Errror login");
+     }
   });
+
+
+ 
+
+  //  this.http.get("http://localhost:3000/student/getBatchmates/"+localStorage.getItem('courseName')+"/"+localStorage.getItem('batchName')).subscribe((data:any)=>{
+
+  //  console.log(data)
+  // //  this.userDetails=data.batches;
+  //  });
+
+  
 
  }
 

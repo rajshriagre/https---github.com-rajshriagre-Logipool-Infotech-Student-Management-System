@@ -53,9 +53,9 @@ form{
     padding: 10px;
     text-align: center;
 }
-.li img{
-    
-}
+/* .liimg{
+    margin-left: 0%;
+} */
 
 /*my css*/
 .input-icons{
@@ -66,4 +66,7 @@ form{
     position: absolute;
     top: calc(25%);
     left: calc(5%);
+}
+.logo{
+    margin: 0%;
 }

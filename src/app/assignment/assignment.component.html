@@ -26,11 +26,12 @@
       <!-- select box start -->
       <div class="selectcontainer">
 
+        <label>Select ModuleName</label><br>
         <select class="form-select" aria-label="Default select example">
-          <option selected>Select Module</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+         
+          <option *ngFor="let value of allModule" [ngValue]="value.courseName" >
+            {{value.moduleName}}
+             </option>
         </select>
         
         <select class="form-select" aria-label="Default select example">
@@ -44,19 +45,25 @@
       
      <!-- select box end -->
 
-        <!-- horizontal card-start -->
-      <div class="d-flex text-body-secondary pt-3">
-        <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-75">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"> <a routerLink="/studenthome/topic">HTML5</a></strong>
-            <span><b>staus</b></span>
+     <!-- horizontal card-start -->
+     <div class="container-fluid" *ngFor="let value of AllAssignments">
+
+          <div class="d-flex text-body-secondary pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-75">
+              <div class="d-flex justify-content-between">
+                <strong class="text-gray-dark"> <a>{{value.moduleName}}</a></strong>
+                <span><b><a [href]="value.assignmentURL">View Assignment</a></b></span>
+              </div>
+              <span class="d-block">{{value.courseName}}</span>
+              <!-- <span class="d-block">FULL STACK WEB DEVELOPEMENT(BATCH 1)</span>-->
+               <span class="d-block">Posted on Saturday ,9th Sept 2023</span> 
+            </div>
           </div>
-          <span class="d-block">FULL STACK WEB DEVELOPEMENT(BATCH 1)</span>
-          <span class="d-block">Posted on Saturday ,9th Sept 2023</span>
-        </div>
-      </div>
-      <!-- horizontal card-end -->
+
+     </div>
+     
+    <!-- horizontal card-end -->
 
 
 
