@@ -8,5 +8,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent {
   title = 'Combined_Project';
-  constructor( public authService:AuthService){}
+  constructor( public authService:AuthService)
+  {}
 }
